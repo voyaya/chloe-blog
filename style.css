@@ -1,0 +1,318 @@
+/*
+ * Chloe's Idol Blog Stylesheet
+ *
+ * This stylesheet defines the visual appearance of Chloe's
+ * multi‑lingual blog. The aesthetic draws inspiration from
+ * early 2010s Japanese idol blogs – soft pastel colours,
+ * hearts and stars, rounded typography and generous
+ * spacing. A dark glitch mode is also available when the
+ * "???" language is selected. In glitch mode the palette
+ * inverts, backgrounds shift to a neon static and text
+ * becomes intentionally corrupted via JavaScript.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
+
+/* Colour palette variables */
+:root {
+  --primary: #ffc5d0;      /* soft pink */
+  --secondary: #fde9ef;    /* blush pink */
+  --accent: #a0d9e7;       /* powder blue */
+  --highlight: #ffdde6;    /* lighter pink */
+  --text-colour: #333333;  /* dark gray for legibility */
+  --bg-colour: #fff8f8;    /* very pale pink background */
+  --link-colour: #0066cc;  /* default link colour in light mode */
+  --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* Dark glitch palette overrides – applied via body.glitch */
+body.glitch {
+  --primary: #ff007a;      /* neon magenta */
+  --secondary: #001f3f;    /* deep navy */
+  --accent: #00ffd0;       /* neon aqua */
+  --highlight: #330040;    /* dark purple */
+  --text-colour: #f5f5f5;  /* near white text */
+  --bg-colour: #0a0a0a;    /* almost black background */
+  --link-colour: #ff66cc;
+  --nav-bg: rgba(0, 0, 0, 0.8);
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-colour);
+  color: var(--text-colour);
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--link-colour);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header and Navigation */
+header {
+  background-image: url('images/pastel_bg.png');
+  background-size: cover;
+  background-position: center;
+  padding: 1.5rem;
+  color: var(--text-colour);
+  position: relative;
+  transition: background-image 0.5s;
+}
+
+body.glitch header {
+  background-image: url('images/glitch_bg.png');
+  color: var(--text-colour);
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(5px);
+}
+
+nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding-right: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  position: relative;
+}
+
+nav li a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  color: var(--text-colour);
+  transition: background-color 0.3s;
+}
+
+nav li a.active,
+nav li a:hover {
+  background-color: var(--highlight);
+}
+
+/* Language selector */
+.language-selector {
+  margin-left: auto;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--primary);
+  background-color: var(--secondary);
+  color: var(--text-colour);
+}
+
+body.glitch .language-selector {
+  border-color: var(--accent);
+  background-color: var(--secondary);
+  color: var(--text-colour);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  padding: 4rem 1rem;
+  text-align: center;
+  background-color: var(--secondary);
+  background-image: linear-gradient(180deg, var(--secondary), var(--bg-colour));
+  overflow: hidden;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.hero p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Content wrapper */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Cards for blog listings */
+.post-card {
+  border: 2px solid var(--primary);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--secondary);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.post-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-card .date {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.8rem;
+}
+
+.post-card p {
+  margin-bottom: 0;
+}
+
+/* Individual post page */
+.post {
+  border: 2px solid var(--primary);
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: var(--secondary);
+}
+
+.post h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.post .date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.post p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Footer */
+footer {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  background-color: var(--secondary);
+  border-top: 1px solid var(--primary);
+}
+
+body.glitch footer {
+  background-color: var(--highlight);
+  color: var(--text-colour);
+}
+
+/* Glitch effect – applied when body.glitch is active */
+.glitch-text {
+  position: relative;
+  color: var(--text-colour);
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--accent);
+  animation: glitch 2s infinite ease-in-out;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--primary);
+  animation: glitch 3s infinite ease-in-out;
+}
+
+@keyframes glitch {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  10% {
+    clip: rect(0, 9999px, 10px, 0);
+  }
+  20% {
+    clip: rect(5px, 9999px, 15px, 0);
+  }
+  30% {
+    clip: rect(10px, 9999px, 5px, 0);
+  }
+  40% {
+    clip: rect(15px, 9999px, 10px, 0);
+  }
+  50% {
+    clip: rect(20px, 9999px, 5px, 0);
+  }
+  60% {
+    clip: rect(25px, 9999px, 10px, 0);
+  }
+  70% {
+    clip: rect(30px, 9999px, 15px, 0);
+  }
+  80% {
+    clip: rect(35px, 9999px, 10px, 0);
+  }
+  90% {
+    clip: rect(40px, 9999px, 5px, 0);
+  }
+  100% {
+    clip: rect(45px, 9999px, 15px, 0);
+  }
+}
