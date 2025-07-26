@@ -57,6 +57,42 @@ img {
   display: block;
 }
 
+/* Post images */
+.post-image {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Comment section styles */
+.comments {
+  margin-top: 2rem;
+}
+
+.comments h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.comment {
+  border-top: 1px solid var(--primary);
+  padding: 1rem 0;
+}
+
+.comment:first-child {
+  border-top: none;
+}
+
+.comment h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-colour);
+}
+
+.comment p {
+  margin: 0.5rem 0 0;
+}
+
 a {
   color: var(--link-colour);
   text-decoration: none;
@@ -249,6 +285,11 @@ footer {
 body.glitch footer {
   background-color: var(--highlight);
   color: var(--text-colour);
+}
+
+/* In glitch mode, apply a filter to all images to make them look strange */
+body.glitch img {
+  filter: invert(80%) hue-rotate(180deg) saturate(180%) contrast(120%);
 }
 
 /* Glitch effect – applied when body.glitch is active */
